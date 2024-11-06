@@ -27,7 +27,7 @@ const int PWMResolution = 8; //8位元解析度，代表最大值255
 const int PWMSpeedChannel = 4; //設定4作為控制通道
 
 const char *ssid = "ChrisCar"; //WiFi ssid名稱
-const char *password = "12345678"; //WiFi密碼
+const char *password = "11111111"; //WiFi密碼
 
 AsyncWebServer server(80); //初始化80 port。
 AsyncWebSocket wsCarInput("/CarInput"); //網頁網址後面加上CarInput
@@ -117,17 +117,17 @@ const char *htmlHomePage PROGMEM = R"HTMLHOMEPAGE(
     <table id="mainTable" border="1" style="width:400px; margin:auto; table-layout:fixed; text-align: center;" CELLSPACING=10>
       <tr>
         <td></td>
-        <td class="button"ontouchstart='sendButtonInput("MoveCar","1")' ontouchend='sendButtonInput("MoveCar","0")'><span class="arrows">&#8679;</span></td>
+        <td class="button" ontouchstart='sendButtonInput("MoveCar","1")' ontouchend='sendButtonInput("MoveCar","0")'><span class="arrows">&#8679;</span></td>
         <td></td>
       </tr>
       <tr>
-        <td class="button"ontouchstart='sendButtonInput("MoveCar","3")' ontouchend='sendButtonInput("MoveCar","0")'><span class="arrows">&#8678;</span></td>
+        <td class="button" ontouchstart='sendButtonInput("MoveCar","3")' ontouchend='sendButtonInput("MoveCar","0")'><span class="arrows">&#8678;</span></td>
         <td class="button"></td>
-        <td class="button"ontouchstart='sendButtonInput("MoveCar","4")' ontouchend='sendButtonInput("MoveCar","0")'><span class="arrows">&#8680;</span></td>
+        <td class="button" ontouchstart='sendButtonInput("MoveCar","4")' ontouchend='sendButtonInput("MoveCar","0")'><span class="arrows">&#8680;</span></td>
       </tr>
       <tr>
         <td></td>
-        <td class="button"ontouchstart='sendButtonInput("MoveCar","2")' ontouchend='sendButtonInput("MoveCar","0")'><span class="arrows">&#8681;</span></td>
+        <td class="button" ontouchstart='sendButtonInput("MoveCar","2")' ontouchend='sendButtonInput("MoveCar","0")'><span class="arrows">&#8681;</span></td>
         <td></td>
       </tr>
       <tr></tr>
@@ -136,7 +136,7 @@ const char *htmlHomePage PROGMEM = R"HTMLHOMEPAGE(
         <td style="text-align:center; font-size:24px"><b>Speed:</b></td>
         <td colspan=2>
           <div class="slidecontainer">
-            <input id="speed" type="range" min="0" max="255" value="125" class="slider" oninput='sendButtonInput("Speed", value)'>
+            <input id="Speed" type="range" min="0" max="255" value="125" class="slider" oninput='sendButtonInput("Speed", value)'>
           </div>
         </td>
       </tr>
@@ -271,14 +271,14 @@ void onCarInputWebSocketEvent(AsyncWebSocket *server,
       if(key=="MoveCar"){
         moveCar(valueInt);
       }else if(key=="Speed"){
-        ledcWrite(PWMSpeedChannel, valueInt)
+        ledcWrite(PWMSpeedChannel, valueInt);
       }
     }
     break;
     case WS_EVT_PONG:
     case WS_EVT_ERROR:
     break;
-    default;
+    default:
     break;
   }
 }
