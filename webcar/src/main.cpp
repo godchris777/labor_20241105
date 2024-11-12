@@ -32,7 +32,7 @@ struct MOTOR_PINS
   int pinEn;
   int pinIN1;
   int pinIN2;
-};   //  ";" 勿忘
+};   // ;一定要加
 
 std::vector<MOTOR_PINS> motorPins =
 {
@@ -190,7 +190,7 @@ document.getElementById("mainTable").addEventListener("touched", function(event)
 
 void setUpPinModes()
 {
-  ledcSetup(PWMSpeedChannel,PWMFreq,PWMResolution);   //使用到的頻道 頻率 解析度
+  ledcSetup(PWMSpeedChannel,PWMFreq,PWMResolution);   //頻道、頻率及解析度
 
   for (int i=0; i< motorPins.size();i++)
   {
@@ -335,6 +335,6 @@ void setup() {
 }
 
 void loop() {
-wsCarInput.cleanupClients();    // 清指令
+wsCarInput.cleanupClients(); //清除
 }
 
