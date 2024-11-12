@@ -18,8 +18,8 @@
 #define BACKWARD -1
 
 const int PWMFreq = 1000; //1khz
-const int PWMResolution = 8;
-const int PWMSpeedChannel = 4;
+const int PWMResolution = 8; //解析度8位元即256
+const int PWMSpeedChannel = 4; 
 
 const char* ssid = "ChrisCar";
 const char* password = "11111111";
@@ -240,27 +240,27 @@ void moveCar(int valueInt)
   Serial.printf("Got value as %d\n", valueInt);
   switch(valueInt)
   {
-    case UP:
+    case UP: //前進
       rotateMotor(RIGHT_MOTOR,FORWARD);
       rotateMotor(LEFT_MOTOR,FORWARD);
     break;
-    case DOWN:
+    case DOWN: //後退
       rotateMotor(RIGHT_MOTOR,BACKWARD);
       rotateMotor(LEFT_MOTOR,BACKWARD);
     break;
-    case LEFT:
+    case LEFT: //右轉
       rotateMotor(RIGHT_MOTOR,FORWARD);
       rotateMotor(LEFT_MOTOR,BACKWARD);
     break;
-    case RIGHT:
+    case RIGHT: //左轉
       rotateMotor(RIGHT_MOTOR,BACKWARD);
       rotateMotor(LEFT_MOTOR,FORWARD);
     break;
-    case STOP:
+    case STOP: //停止
       rotateMotor(LEFT_MOTOR,STOP);
       rotateMotor(LEFT_MOTOR,STOP);
     break;
-    default:
+    default: //靜止
       rotateMotor(LEFT_MOTOR,STOP);
       rotateMotor(LEFT_MOTOR,STOP);
     break;
