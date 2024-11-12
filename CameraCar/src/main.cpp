@@ -5,6 +5,8 @@
 #include <ESPAsyncWebServer.h>
 #include <AsyncTCP.h>
 
+#include "esp_camera.h"
+
 #define UP 1
 #define DOWN 2
 #define LEFT 3
